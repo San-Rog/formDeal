@@ -63,11 +63,25 @@ def createForm():
         PDFbyte = pdf_file.read()
     return PDFbyte
     
-def iniKeys(mode, key):
+def iniFinally(mode):
     if mode == 0:
-        for key in keysCount:
+        for key in listKeys:
             if key not in st.session_state:
-                st.session_state[key] = False
+                try:
+                    st.session_state[key] = keyNames[key]
+                except:
+                    pass        
+    else:
+        try:
+            for key in listKeys:
+                del st.session_state[key]
+        except:
+            pass
+        iniFinally(0)
+    try:
+        st.rerun()
+    except:
+        pass       
  
 def message(head, text):
     @st.dialog(head)
@@ -97,8 +111,9 @@ def main():
     global optionsCount, optionsCred
     optionsEdit = [str(n) for n in range(1, 5)]
     optionsRod = [str(n) for n in range(1, 5)]
-    keysCount = ['um', 'dois']
-    iniKeys(0, '')
+    keysCount = ['precat', 'requer', 'proc', 'obj', 'modelOne', 'modelTwo', 'bank', 'agency', 'verify', 
+                 'cpf', 'cpfV', 'edital', 'rodada', 'count', 'countV']
+    iniFinally(0)
     optionsCred = ["Crédito Principal", "Honorários Contratuais", "Honorários Sucumbenciais"] 
     optionsCount = ["Conta-Corrente", "Conta-Poupança"]   
     formPdf = 'formTJMA.pdf'
@@ -118,8 +133,8 @@ def main():
             verify = colDigit.text_input('Dígito')
             st.caption('Tipo de conta')
             colOne, colTwo = st.columns(spec = 2)
-            modelOne = colOne.checkbox(optionsCount[0], key=keysCount[0], value=st.session_state[keysCount[0]])
-            modelTwo = colTwo.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
+            modelOne = colOne.checkbox(optionsCount[0], key=keysCount[5], value=st.session_state[keysCount[5]])
+            modelTwo = colTwo.checkbox(optionsCount[1], key=keysCount[6], value=st.session_state[keysCount[6]])
             colCount, colCountV = st.columns([6.2, 2])
             count = colCount.text_input('Conta')
             countV = colCountV.text_input('Final')
@@ -151,7 +166,8 @@ def main():
                                 file_name='formulário_TJMA_preenchido.pdf',
                                 mime='application/octet-stream',
                 )
-                time.sleep(2)
+            time.sleep(3)
+            
     
 if __name__ == '__main__':
     st.set_page_config(layout="wide")
