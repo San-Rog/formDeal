@@ -150,7 +150,8 @@ def main():
                                 data=pdfCreate,
                                 file_name='formulário_TJMA_preenchido.pdf',
                                 mime='application/octet-stream',
-                )            
+                )
+                time.sleep(2)
     
 if __name__ == '__main__':
     st.set_page_config(layout="wide")
