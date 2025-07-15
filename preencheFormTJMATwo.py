@@ -91,7 +91,6 @@ def ckeckPlaces():
                break
     if all([modelOne, modelTwo]):
         placeVoid = True
-        break
     return placeVoid            
 
 def main():
