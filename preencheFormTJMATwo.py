@@ -1,5 +1,5 @@
 import streamlit as st 
-import PyMuPDF
+import pymupdf
 import os
 import time
 
