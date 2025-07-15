@@ -92,7 +92,7 @@ def main():
     optionsCount = ["Conta-Corrente", "Conta-Poupança"]   
     formPdf = 'formTJMA.pdf'
     formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV = ['' for w in range(16)]
-    formPdf = r'C:\Users\ACER\Documents\formTJMA.pdf'
+    formPdf = 'formTJMA.pdf'
     with st.container(border=2):
         colPrecat, colBank, colTerm = st.columns([2.4, 2, 2], gap='small', vertical_alignment='center')
         with colPrecat:
