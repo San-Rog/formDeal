@@ -101,8 +101,7 @@ def zeraWidget():
             elif k == 13:
                 st.session_state[key] = 0
             else:
-                st.session_state[key] = 2
-    st.rerun()        
+                st.session_state[key] = 2       
 
 def ckeckPlaces(): 
     placeVoid = False
