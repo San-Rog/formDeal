@@ -74,7 +74,10 @@ def message(head, text):
     def config():
         st.markdown(text)
     config()
+
+def zeraWidget():
     
+
 def ckeckPlaces(): 
     placeVoid = False
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
@@ -108,28 +111,28 @@ def main():
     with st.container(border=2):
         colPrecat, colBank, colTerm = st.columns([2.4, 2, 2], gap='small', vertical_alignment='center')
         with colPrecat:
-            precat = st.text_input('Precatório n°')
-            requer = st.text_input('Requerente(s)')
-            proc = st.text_input('Referência (Ação Originária/Execução)')
-            obj = st.multiselect('Crédito Negociado', optionsCred, default=[optionsCred[0]])
+            precat = st.text_input('Precatório n°', key='precat')
+            requer = st.text_input('Requerente(s)', key='requer')
+            proc = st.text_input('Referência (Ação Originária/Execução)', key='proc')
+            obj = st.multiselect('Crédito Negociado', optionsCred, default=[optionsCred[0]], key='obj')
         with colBank:
-            bank = st.text_input('Banco')
+            bank = st.text_input('Banco', key='bank')
             colAgency, colDigit = st.columns([6.2, 2])
-            agency = colAgency.text_input('Agência')
-            verify = colDigit.text_input('Dígito')
+            agency = colAgency.text_input('Agência', key='agency')
+            verify = colDigit.text_input('Dígito', key='verify')
             st.caption('')
             colOne, colTwo = st.columns(spec=2)
             modelOne = colOne.checkbox(optionsCount[0], key=keysCount[0], value=st.session_state[keysCount[0]])
             modelTwo = colTwo.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
             colCount, colCountV = st.columns([6.2, 2])
-            count = colCount.text_input('Conta')
-            countV = colCountV.text_input('Final')
+            count = colCount.text_input('Conta', key='count')
+            countV = colCountV.text_input('Final', key='countV')
         with colTerm:
            cod, codV = st.columns([6.2, 2])
-           cpf = cod.text_input('CPF')
-           cpfV = codV.text_input('Verificador')
-           edital = st.selectbox('Edital Conjunto TJMA/PGE-MA nº___/2025', optionsEdit, index=0)
-           rodada = st.selectbox('Edital da Rodada de Chamamento n.°', optionsRod, index=2)
+           cpf = cod.text_input('CPF', key='cpf')
+           cpfV = codV.text_input('Verificador', key='cpfV')
+           edital = st.selectbox('Edital Conjunto TJMA/PGE-MA nº___/2025', optionsEdit, index=0, key='edital')
+           rodada = st.selectbox('Edital da Rodada de Chamamento n.°', optionsRod, index=2, key='rodada')
     if modelOne and modelTwo:
         del st.session_state[keysCount[0]]
         del st.session_state[keysCount[1]]
