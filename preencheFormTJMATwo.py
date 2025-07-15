@@ -75,6 +75,11 @@ def message(head, text):
         st.markdown(text)
     config()
 
+def ckeckPlaces():    
+    #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
+    for elem in [precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
+        st.Print(elem, type(elem))
+
 def main():
     global formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     global day, mont, year, keysCount
@@ -119,6 +124,7 @@ def main():
     pdfCreate = ''    
     colCreate, colDown, colOne, colTwo, colThre, colFour = st.columns(spec=6)    
     if colCreate.button('Preenchimento'):
+        ckeckPlaces()
         pdfCreate = createForm()
         if len(pdfCreate) > 0:
             colDown.download_button(
