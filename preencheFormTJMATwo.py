@@ -86,8 +86,7 @@ def ckeckPlaces():
         else:
             if len(elem.strip()) == 0:
                 placeVoid = True
-                break
-        st.write(e, elem, placeVoid)
+                break        
     if all([not modelOne, not modelTwo]):
         placeVoid = True
     return placeVoid            
@@ -141,7 +140,7 @@ def main():
     colCreate, colDown, colOne, colTwo, colThre, colFour = st.columns(spec=6)    
     if colCreate.button('Preenchimento'):
         if ckeckPlaces(): 
-            message('Campos vazios', 'Preencha todos os campos!')
+            message('Campos vazios', 'Há um ou mais campos vazios. Preencha a todos eles!')
             time.sleep(3)
         else:
             pdfCreate = createForm()
