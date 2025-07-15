@@ -76,7 +76,7 @@ def message(head, text):
     config()
 
 def zeraWidget():
-    
+    pass
 
 def ckeckPlaces(): 
     placeVoid = False
