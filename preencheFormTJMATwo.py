@@ -76,17 +76,17 @@ def message(head, text):
     config()
     
 def ckeckPlaces(): 
-    #placeVoid = False
+    placeVoid = False
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     for e, elem in enumerate([precat, requer, proc, obj, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]):
         if type(elem) == list:
             if len(elem) == 0:
                 placeVoid = True
-                break
+                #break
         else:
             if len(elem.strip()) == 0:
                 placeVoid = True
-                break
+                #break
         st.write(e, elem, placeVoid)
     st.write(modelOne)
     st.write(modelTwo)
