@@ -1,4 +1,2 @@
-PyPDF2
-openai
-PyMuPDF  # instead of fitz
+PyMuPDF=1.26.3
 
