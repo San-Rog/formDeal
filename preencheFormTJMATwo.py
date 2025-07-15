@@ -6,7 +6,7 @@ import time
 def createForm():
     doc = pymupdf.open(formPdf)
     docNew = 'exemplo.pdf' 
-    st.Write(obj)
+    st.write(obj)
     if obj == optionsCred[0]:
         markCp = 'x'
     else:
