@@ -117,6 +117,7 @@ def main():
             colAgency, colDigit = st.columns([6.2, 2])
             agency = colAgency.text_input('Agência')
             verify = colDigit.text_input('Dígito')
+            st.text('Tipo de conta')
             colOne, colTwo = st.columns(spec=2)
             modelOne = colOne.checkbox(optionsCount[0], key=keysCount[0], value=st.session_state[keysCount[0]])
             modelTwo = colTwo.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
