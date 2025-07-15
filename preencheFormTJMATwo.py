@@ -81,6 +81,16 @@ def zeraWidget():
     for k, key in enumerate(allKeys):
         if key in st.session_state:
             del st.session_state[key]
+            if k in [0, 1, 2, 6, 7, 8, 9, 10, 11, 14, 15]:
+                st.session_state[key] = ''
+            elif k == 3:
+                st.session_state[key] = optionsCred[0]
+            elif k in [4, 5]:
+                st.session_state[key] = False
+            elif k == 13:
+                st.session_state[key] = 0
+            else:
+                st.session_state[key] = 2
         else:
             if k in [0, 1, 2, 6, 7, 8, 9, 10, 11, 14, 15]:
                 st.session_state[key] = ''
@@ -127,8 +137,8 @@ def main():
     with st.container(border=2):
         colPrecat, colBank, colTerm = st.columns([2.4, 2, 2], gap='small', vertical_alignment='center')
         with colPrecat:
-            precat = st.text_input('Precatório n°', key='precat', st.session_state['precat'])
-            requer = st.text_input('Requerente(s)', key='requer', st.session_state['requer'])
+            precat = st.text_input('Precatório n°', key='precat', value=st.session_state['precat'])
+            requer = st.text_input('Requerente(s)', key='requer', value=st.session_state['requer'])
             proc = st.text_input('Referência (Ação Originária/Execução)', key='proc')
             obj = st.multiselect('Crédito Negociado', optionsCred, default=[optionsCred[0]], key='obj')
         with colBank:
