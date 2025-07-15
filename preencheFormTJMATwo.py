@@ -4,7 +4,7 @@ import os
 import time
 
 def createForm():
-    doc = fitz.open(formPdf)
+    doc = pymupdf.open(formPdf)
     docNew = f'{requer}.pdf'
     try:
         sg.Print('obj', obj)
