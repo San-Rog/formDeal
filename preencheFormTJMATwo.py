@@ -128,9 +128,9 @@ def main():
     optionsEdit = [str(n) for n in range(1, 5)]
     optionsRod = [str(n) for n in range(1, 5)]
     keysCount = ['um', 'dois']
-    zeraWidget()
     optionsCred = ["Crédito Principal", "Honorários Contratuais", "Honorários Sucumbenciais"] 
-    optionsCount = ["Conta-Corrente", "Conta-Poupança"]   
+    optionsCount = ["Conta-Corrente", "Conta-Poupança"] 
+    zeraWidget()
     formPdf = 'formTJMA.pdf'
     formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV = ['' for w in range(16)]
     formPdf = 'formTJMA.pdf'
