@@ -63,25 +63,11 @@ def createForm():
         PDFbyte = pdf_file.read()
     return PDFbyte
     
-def iniFinally(mode):
+def iniKeys(mode, key):
     if mode == 0:
-        for key in listKeys:
+        for key in keysCount:
             if key not in st.session_state:
-                try:
-                    st.session_state[key] = keyNames[key]
-                except:
-                    pass        
-    else:
-        try:
-            for key in listKeys:
-                del st.session_state[key]
-        except:
-            pass
-        iniFinally(0)
-    try:
-        st.rerun()
-    except:
-        pass       
+                st.session_state[key] = False
  
 def message(head, text):
     @st.dialog(head)
@@ -96,13 +82,14 @@ def ckeckPlaces():
         if type(elem) == list:
             if len(elem) == 0:
                 placeVoid = True
-                break
+                #break
         else:
             if len(elem.strip()) == 0:
                 placeVoid = True
-                break        
-    if all([not modelOne, not modelTwo]):
-        placeVoid = True
+                #break
+        st.write(e, elem, placeVoid)
+    st.write(modelOne)
+    st.write(modelTwo)
     return placeVoid            
 
 def main():
@@ -111,9 +98,8 @@ def main():
     global optionsCount, optionsCred
     optionsEdit = [str(n) for n in range(1, 5)]
     optionsRod = [str(n) for n in range(1, 5)]
-    keysCount = ['precat', 'requer', 'proc', 'obj', 'modelOne', 'modelTwo', 'bank', 'agency', 'verify', 
-                 'cpf', 'cpfV', 'edital', 'rodada', 'count', 'countV']
-    iniFinally(0)
+    keysCount = ['um', 'dois']
+    iniKeys(0, '')
     optionsCred = ["Crédito Principal", "Honorários Contratuais", "Honorários Sucumbenciais"] 
     optionsCount = ["Conta-Corrente", "Conta-Poupança"]   
     formPdf = 'formTJMA.pdf'
@@ -132,9 +118,8 @@ def main():
             agency = colAgency.text_input('Agência')
             verify = colDigit.text_input('Dígito')
             st.caption('Tipo de conta')
-            colOne, colTwo = st.columns(spec = 2)
-            modelOne = colOne.checkbox(optionsCount[0], key=keysCount[5], value=st.session_state[keysCount[5]])
-            modelTwo = colTwo.checkbox(optionsCount[1], key=keysCount[6], value=st.session_state[keysCount[6]])
+            modelOne = st.checkbox(optionsCount[0], key=keysCount[0], value=st.session_state[keysCount[0]])
+            modelTwo = st.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
             colCount, colCountV = st.columns([6.2, 2])
             count = colCount.text_input('Conta')
             countV = colCountV.text_input('Final')
@@ -155,7 +140,7 @@ def main():
     colCreate, colDown, colOne, colTwo, colThre, colFour = st.columns(spec=6)    
     if colCreate.button('Preenchimento'):
         if ckeckPlaces(): 
-            message('Campos vazios', 'Há um ou mais campos vazios. Preencha a todos eles!')
+            message('Campos vazios', 'Preencha todos os campos!')
             time.sleep(3)
         else:
             pdfCreate = createForm()
@@ -165,9 +150,7 @@ def main():
                                 data=pdfCreate,
                                 file_name='formulário_TJMA_preenchido.pdf',
                                 mime='application/octet-stream',
-                )
-            time.sleep(3)
-            
+                )            
     
 if __name__ == '__main__':
     st.set_page_config(layout="wide")
