@@ -120,14 +120,14 @@ def main():
     colCreate, colDown, colOne, colTwo, colThre, colFour = st.columns(spec=6)    
     if colCreate.button('Preenchimento'):
         pdfCreate = createForm()
-    if len(pdfCreate) > 0:
-        colDown.download_button(
+        if len(pdfCreate) > 0:
+            colDown.download_button(
                             label='Download',
                             data=pdfCreate,
                             file_name='formulário_TJMA_preenchido.pdf',
                             mime='application/octet-stream',
-        )
-        st.rerun()
+            )
+            st.rerun()
     
 if __name__ == '__main__':
     st.set_page_config(layout="wide")
