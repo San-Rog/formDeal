@@ -88,8 +88,8 @@ def ckeckPlaces():
             if elem.strip() == '':
                 placeVoid = True
                 break
-    if all([not modelOne, not modelTwo]):
-        placeVoid = True
+    st.write(modelOne)
+    st.write(modelTwo)
     return placeVoid            
 
 def main():
