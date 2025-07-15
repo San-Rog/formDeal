@@ -114,12 +114,15 @@ def main():
             obj = st.multiselect('Crédito Negociado', optionsCred, default=[optionsCred[0]])
         with colBank:
             bank = st.text_input('Banco')
-            banks, digit = st.columns([6.2, 2])
-            agency = banks.text_input('Agência')
-            verify = digit.text_input('Dígito')
+            colAgency, colDigit = st.columns([6.2, 2])
+            agency = colAgency.text_input('Agência')
+            verify = colDigit.text_input('Dígito')
             st.caption('Tipo de conta')
             modelOne = st.checkbox(optionsCount[0], key=keysCount[0], value=st.session_state[keysCount[0]])
             modelTwo = st.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
+            colCount, colCountV = st.columns([6.2, 2])
+            count = colCount.text_input('Conta')
+            countV = colCountV.text_input('Dígito')
         with colTerm:
            cod, codV = st.columns([6.2, 2])
            cpf = cod.text_input('CPF')
