@@ -79,12 +79,14 @@ def ckeckPlaces():
     placeVoid = False
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     for elem in [precat, requer, proc, obj, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
-        if type(elem) == list and len(elem) == 0:
-            placeVoid = True
-            break
-        elif type(elem) == bool and not elem: 
-            placeVoid = True
-            break
+        if type(elem) == list:
+            if len(elem) == 0
+                placeVoid = True
+                break
+        elif type(elem) == bool: 
+            if not elem: 
+                placeVoid = True
+                break
         else:
             st.write('elem', elem)
             if elem.strip() == '':
