@@ -122,7 +122,7 @@ def main():
             modelTwo = st.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
             colCount, colCountV = st.columns([6.2, 2])
             count = colCount.text_input('Conta')
-            countV = colCountV.text_input('Dígito')
+            countV = colCountV.text_input('Final')
         with colTerm:
            cod, codV = st.columns([6.2, 2])
            cpf = cod.text_input('CPF')
