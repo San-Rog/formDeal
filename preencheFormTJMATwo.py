@@ -76,32 +76,8 @@ def message(head, text):
     config()
 
 def zeraWidget():
-    allKeys = ['precat', 'requer', 'proc', 'obj', 'modelOne', 'modelTwo', 'bank', 
-               'agency', 'verify', 'cpf', 'cpfV', 'edital', 'rodada', 'count', 'countV']
-    for k, key in enumerate(allKeys):
-        if key in st.session_state:
-            del st.session_state[key]
-            if k in [0, 1, 2, 6, 7, 8, 9, 10, 11, 14, 15]:
-                st.session_state[key] = ''
-            elif k == 3:
-                st.session_state[key] = optionsCred[0]
-            elif k in [4, 5]:
-                st.session_state[key] = False
-            elif k == 13:
-                st.session_state[key] = 0
-            else:
-                st.session_state[key] = 2
-        else:
-            if k in [0, 1, 2, 6, 7, 8, 9, 10, 11, 14, 15]:
-                st.session_state[key] = ''
-            elif k == 3:
-                st.session_state[key] = optionsCred[0]
-            elif k in [4, 5]:
-                st.session_state[key] = False
-            elif k == 13:
-                st.session_state[key] = 0
-            else:
-                st.session_state[key] = 2       
+    allKeys = ['precat', 'requer', 'proc', 'bank', 'agency', 'verify', 'cpf', 'cpfV', 'edital', 'rodada', 'count', 'countV']
+    pass
 
 def ckeckPlaces(): 
     placeVoid = False
@@ -127,17 +103,17 @@ def main():
     optionsEdit = [str(n) for n in range(1, 5)]
     optionsRod = [str(n) for n in range(1, 5)]
     keysCount = ['um', 'dois']
+    iniKeys(0, '')
     optionsCred = ["Crédito Principal", "Honorários Contratuais", "Honorários Sucumbenciais"] 
-    optionsCount = ["Conta-Corrente", "Conta-Poupança"] 
-    #zeraWidget()
+    optionsCount = ["Conta-Corrente", "Conta-Poupança"]   
     formPdf = 'formTJMA.pdf'
     formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV = ['' for w in range(16)]
     formPdf = 'formTJMA.pdf'
     with st.container(border=2):
         colPrecat, colBank, colTerm = st.columns([2.4, 2, 2], gap='small', vertical_alignment='center')
         with colPrecat:
-            precat = st.text_input('Precatório n°', key='precat', value=st.session_state['precat'])
-            requer = st.text_input('Requerente(s)', key='requer', value=st.session_state['requer'])
+            precat = st.text_input('Precatório n°', key='precat')
+            requer = st.text_input('Requerente(s)', key='requer')
             proc = st.text_input('Referência (Ação Originária/Execução)', key='proc')
             obj = st.multiselect('Crédito Negociado', optionsCred, default=[optionsCred[0]], key='obj')
         with colBank:
@@ -147,8 +123,8 @@ def main():
             verify = colDigit.text_input('Dígito', key='verify')
             st.caption('')
             colOne, colTwo = st.columns(spec=2)
-            modelOne = colOne.checkbox(optionsCount[0], key='modelOne', value=st.session_state['modelOne'])
-            modelTwo = colTwo.checkbox(optionsCount[1], key='modelTwo', value=st.session_state['modelTwo'])
+            modelOne = colOne.checkbox(optionsCount[0], key=keysCount[0], value=st.session_state[keysCount[0]])
+            modelTwo = colTwo.checkbox(optionsCount[1], key=keysCount[1], value=st.session_state[keysCount[1]])
             colCount, colCountV = st.columns([6.2, 2])
             count = colCount.text_input('Conta', key='count')
             countV = colCountV.text_input('Final', key='countV')
@@ -179,8 +155,7 @@ def main():
                                 data=pdfCreate,
                                 file_name='formulário_TJMA_preenchido.pdf',
                                 mime='application/octet-stream',
-                ) 
-                zeraWidget()
+                )            
     
 if __name__ == '__main__':
     st.set_page_config(layout="wide")
