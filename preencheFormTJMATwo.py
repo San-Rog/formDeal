@@ -85,7 +85,7 @@ def zeraWidget():
             if k in [0, 1, 2, 6, 7, 8, 9, 10, 11, 14, 15]:
                 st.session_state[key] = ''
             elif k == 3:
-                st.session_state[key] = optionsCred[0]]
+                st.session_state[key] = optionsCred[0]
             elif k in [4, 5]:
                 st.session_state[key] = False
             elif k == 13:
