@@ -57,7 +57,7 @@ def createForm():
         page_number = 0
         cor = (0, 0, 1) 
         page = doc.load_page(page_number)
-        rect = fitz.Rect(pos)  
+        rect = pymupdf.Rect(pos)  
         rotate = 0  
         shape = page.new_shape()
         shape.insert_text(rect.top_left, text, color=cor, rotate=rotate)
