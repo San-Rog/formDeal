@@ -76,7 +76,7 @@ def message(head, text):
     config()
     
 def ckeckPlaces(): 
-    placeVoid = False
+    #placeVoid = False
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     for e, elem in enumerate([precat, requer, proc, obj, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]):
         st.write(e, elem)
