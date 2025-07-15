@@ -6,16 +6,15 @@ import time
 def createForm():
     doc = pymupdf.open(formPdf)
     docNew = 'exemplo.pdf' 
-    st.write(obj)
-    if obj == optionsCred[0]:
+    if optionsCred[0] in obj:
         markCp = 'x'
     else:
         markCp = ''
-    if obj == optionsCred[1]:
+    if optionsCred[1] in obj:
         markHc = 'x'
     else:
         markHc = ''
-    if obj == optionsCred[2]:
+    if optionsCred[2] in obj:
         markHs = 'x'
     else:
         markHs = ''
