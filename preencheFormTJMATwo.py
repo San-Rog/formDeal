@@ -78,7 +78,7 @@ def message(head, text):
 def ckeckPlaces():    
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     for elem in [precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
-        st.Print(elem, type(elem))
+        st.write(elem, type(elem))
 
 def main():
     global formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
