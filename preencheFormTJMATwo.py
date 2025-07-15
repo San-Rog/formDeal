@@ -80,7 +80,7 @@ def ckeckPlaces():
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     for elem in [precat, requer, proc, obj, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
         if type(elem) == list:
-            if len(elem) == 0
+            if len(elem) == 0:
                 placeVoid = True
                 break
         elif type(elem) == bool: 
