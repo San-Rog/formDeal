@@ -5,7 +5,7 @@ import time
 
 def createForm():
     doc = pymupdf.open(formPdf)
-    docNew = 'exemplo.pdf' 
+    docNew = 'template.pdf' 
     if optionsCred[0] in obj:
         markCp = 'x'
     else:
@@ -78,7 +78,7 @@ def message(head, text):
 def ckeckPlaces(): 
     placeVoid = False
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
-    for elem in [precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
+    for elem in [precat, requer, proc, obj, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
         if type(elem) == list and len(elem) == 0:
             placeVoid = True
             break
@@ -89,6 +89,9 @@ def ckeckPlaces():
            if elem.strip() == '':
                placeVoid = True
                break
+    if all([modelOne, modelTwo]):
+        placeVoid = True
+        break
     return placeVoid            
 
 def main():
