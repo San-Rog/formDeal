@@ -76,6 +76,7 @@ def message(head, text):
     config()
 
 def zeraWidget():
+    allKeys = ['precat', 'requer', 'proc', 'bank', 'agency', 'verify', 'cpf', 'cpfV', 'edital', 'rodada', 'count', 'countV']
     pass
 
 def ckeckPlaces(): 
