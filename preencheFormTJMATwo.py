@@ -88,7 +88,7 @@ def ckeckPlaces():
             if elem.strip() == '':
                 placeVoid = True
                 break
-    if all([modelOne, modelTwo]):
+    if all([not modelOne, not modelTwo]):
         placeVoid = True
     return placeVoid            
 
