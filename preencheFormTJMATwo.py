@@ -1,5 +1,5 @@
 import streamlit as st 
-import fitz
+import pymupdf
 import os
 import time
 
