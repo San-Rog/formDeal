@@ -74,12 +74,22 @@ def message(head, text):
     def config():
         st.markdown(text)
     config()
-
-def ckeckPlaces():    
+    
+def ckeckPlaces(): 
+    placeVoid = False
     #precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
     for elem in [precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV]:
-        if type(elem) == list: 
-            st.write(elem)
+        if type(elem) == list and len(elem) == 0:
+            placeVoid = True
+            break
+        elif type(elem) == bool and not elem: 
+            placeVoid = True
+            break
+        else:
+           if elem.strip() == '':
+               placeVoid = True
+               break
+    return placeVoid            
 
 def main():
     global formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV
@@ -125,15 +135,18 @@ def main():
     pdfCreate = ''    
     colCreate, colDown, colOne, colTwo, colThre, colFour = st.columns(spec=6)    
     if colCreate.button('Preenchimento'):
-        ckeckPlaces()
-        pdfCreate = createForm()
-        if len(pdfCreate) > 0:
-            colDown.download_button(
-                            label='Download',
-                            data=pdfCreate,
-                            file_name='formulário_TJMA_preenchido.pdf',
-                            mime='application/octet-stream',
-            )            
+        if ckeckPlaces(): 
+            message('Campos vazios', 'Preencha todos os campos!')
+            time.sleep(3)
+        else:
+            pdfCreate = createForm()
+            if len(pdfCreate) > 0:
+                colDown.download_button(
+                                label='Download',
+                                data=pdfCreate,
+                                file_name='formulário_TJMA_preenchido.pdf',
+                                mime='application/octet-stream',
+                )            
     
 if __name__ == '__main__':
     st.set_page_config(layout="wide")
