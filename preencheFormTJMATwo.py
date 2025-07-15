@@ -6,7 +6,7 @@ import time
 def createForm():
     doc = pymupdf.open(formPdf)
     docNew = 'exemplo.pdf' 
-    sg.Write(obj)
+    st.Write(obj)
     if obj == optionsCred[0]:
         markCp = 'x'
     else:
@@ -119,11 +119,11 @@ def main():
         st.rerun() 
     pdfCreate = ''    
     colCreate, colDown, colOne, colTwo, colThre, colFour = st.columns(spec=6)    
-    if colCreate.button('Preenchimento do formulário'):
+    if colCreate.button('Preenchimento'):
         pdfCreate = createForm()
     if len(pdfCreate) > 0:
         colDown.download_button(
-                            label='Download do formulário',
+                            label='Download',
                             data=pdfCreate,
                             file_name='formulário_TJMA_preenchido.pdf',
                             mime='application/octet-stream',
