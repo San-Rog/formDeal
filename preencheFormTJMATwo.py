@@ -95,7 +95,7 @@ def main():
             precat = st.text_input('Precatório n°')
             requer = st.text_input('Requerente(s)')
             proc = st.text_input('Referência (Ação Originária/Execução)')
-            obj = st.multiselect('Crédito Negociado', optionsCred, default=[optionsCred[0]])
+            obj = st.multiselect('Crédito Negociado', optionsCred)
         with colBank:
             bank = st.text_input('Banco')
             banks, digit = st.columns([6.2, 2])
@@ -108,8 +108,8 @@ def main():
            cod, codV = st.columns([6.2, 2])
            cpf = cod.text_input('CPF')
            cpfV = codV.text_input('Verificador')
-           edital = st.selectbox('Edital Conjunto TJMA/PGE-MA nº___/2025', optionsEdit, index=0)
-           rodada = st.selectbox('Edital da Rodada de Chamamento n.°', optionsRod, index=2)
+           edital = st.selectbox('Edital Conjunto TJMA/PGE-MA nº___/2025', optionsEdit)
+           rodada = st.selectbox('Edital da Rodada de Chamamento n.°', optionsRod)
     if modelOne and modelTwo:
         del st.session_state[keysCount[0]]
         del st.session_state[keysCount[1]]
