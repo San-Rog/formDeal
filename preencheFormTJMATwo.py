@@ -82,14 +82,14 @@ def ckeckPlaces():
         if type(elem) == list:
             if len(elem) == 0:
                 placeVoid = True
-                #break
+                break
         else:
             if len(elem.strip()) == 0:
                 placeVoid = True
-                #break
+                break
         st.write(e, elem, placeVoid)
-    st.write(modelOne)
-    st.write(modelTwo)
+    if all([not modelOne, not modelTwo]):
+        placeVoid = True
     return placeVoid            
 
 def main():
