@@ -90,7 +90,7 @@ def main():
     iniKeys(0, '')
     optionsCred = ["Crédito Principal", "Honorários Contratuais", "Honorários Sucumbenciais"] 
     optionsCount = ["Conta-Corrente", "Conta-Poupança"]   
-    formPdf = r'C:\Users\ACER\Documents\formTJMA.pdf'
+    formPdf = 'formTJMA.pdf'
     formPdf, precat, requer, proc, obj, modelOne, modelTwo, bank, agency, verify, cpf, cpfV, edital, rodada, count, countV = ['' for w in range(16)]
     formPdf = r'C:\Users\ACER\Documents\formTJMA.pdf'
     with st.container(border=2):
