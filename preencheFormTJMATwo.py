@@ -83,10 +83,6 @@ def ckeckPlaces():
             if len(elem) == 0:
                 placeVoid = True
                 break
-        elif type(elem) == bool: 
-            if not elem: 
-                placeVoid = True
-                break
         else:
             st.write('elem', elem)
             if elem.strip() == '':
